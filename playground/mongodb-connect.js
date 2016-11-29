@@ -1,16 +1,21 @@
-const MongoClient=require('mongodb').MongoClient;
+// const MongoClient=require('mongodb').MongoClient;
 
-
+var {MongoClient,ObjectID}=require('mongodb');
+ 
+var obj=new ObjectID();
+console.log(obj);
+ 
  var promise=new Promise((resolve,reject)=>{
 
+ 
+var url='mongodb://localhost:27017/TodoApp';
 
-MongoClient.connect('mongodb://localhost:27017/TodoApp',(error,db)=>{
+MongoClient.connect(url,(error,db)=>{
 
 if(error){
-  return  console.log('Unable to connect to mongodb server');
+    reject('Unable to connect to mongodb server');
 }
 
-console.log('Connected to MongoDb ');
 
 // db.collection('Todos').insertOne({
 //     text:'Something to do',
@@ -26,18 +31,18 @@ console.log('Connected to MongoDb ');
 // });
 
  
-db.collection('Users').insertOne({
-    name:"Michael",
-    age:25,
-    location:"Dar es salaam"
+db.collection('Todos').insertOne({
+    name:"Ruki",
+    age:23,
+    Completed:true
 },(error,result)=>{
 
    if(error){
-      return reject('Failed to insert users collection');
+      reject('Failed to insert data into users');
    }
    else{
 
-       console.log(resolve(JSON.stringify(result.ops,undefined,2)));
+       resolve(result.ops);
 
    }
 
@@ -49,5 +54,12 @@ db.close();
 });
 
 
-});
 
+
+ });
+
+ promise.then((succ)=>{
+    console.log(succ);
+ }).catch((error)=>{
+     console.log(error);
+ });
