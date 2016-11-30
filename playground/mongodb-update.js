@@ -7,15 +7,23 @@ MongoClient.connect(url,(error,db)=>{
         return console.log('Failed to connect to mongodb server');
     }
     
-  db.collection('Users').findOneAndUpdate({name:"Michael"},{
+  db.collection('Users').findOneAndUpdate({name:"Clara"},{
      $set:{ 
          name:"Clara",
          sex:'Male',
          friends:['Michael','Ruki','Caro']
 
           },
-          $inc:{
-              age:1
+          $min:{
+              age:21
+          },
+          
+          $currentDate:{
+            
+                  lastmodified:{
+                      $type:"timestamp"
+                  }
+              
           }
   },{
       returnOriginal:false
