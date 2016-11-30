@@ -5,6 +5,9 @@ var bodyParser=require('body-parser');
 var {mongoose}=require('./db/mongoose');
 var {User}=require('./models/User');
 var {Todo}=require('./models/Todo');
+var {ObjectId}=require('mongodb');
+
+
 
 
 var app=express();
@@ -36,6 +39,29 @@ app.get('/todos',(req,res)=>{
         });
     }).catch((err)=>{
        res.status(400).send(err);
+    });
+});
+
+//get passing a url parameter
+app.get('/todos/:id',(req,res)=>{
+     
+
+    //  var id="583df7ec6d58d50816a55aa0";
+      var id=req.params.id;
+      
+     var isValidId=ObjectId.isValid(id);
+
+     if(!isValidId){
+         return res.status(404).send('Invalid id');
+     }
+
+    Todo.findById(id).then((succ)=>{
+       if(succ){
+         return  res.send({succ});
+       }
+       return res.status(404).send(succ);
+    }).catch((err)=>{
+        res.status(400).send(res.body);
     });
 });
 
