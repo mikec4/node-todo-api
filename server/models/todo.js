@@ -2,7 +2,7 @@ var {mongoose}=require('../db/mongoose');
 
 var Todo=mongoose.model('Todo',{
 
-    text:{
+    name:{
         type:String,
         required:true,
         minlength:1,
