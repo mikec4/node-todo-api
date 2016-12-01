@@ -7,12 +7,13 @@ var {User}=require('./models/User');
 var {Todo}=require('./models/Todo');
 var {ObjectId}=require('mongodb');
 
-
+const port=process.env.PORT || 3000;
 
 
 var app=express();
 
 app.use(bodyParser.json());
+
 
 //post
 app.post('/todos',(req,res)=>{
@@ -49,6 +50,7 @@ app.get('/todos/:id',(req,res)=>{
     //  var id="583df7ec6d58d50816a55aa0";
       var id=req.params.id;
       
+      
      var isValidId=ObjectId.isValid(id);
 
      if(!isValidId){
@@ -68,8 +70,8 @@ app.get('/todos/:id',(req,res)=>{
 
 
 
-app.listen(3000,()=>{
-    console.log('Starting port 3000');
+app.listen(port,()=>{
+    console.log(`Started at port  ${port}`);
 });
 
 module.exports={app};
