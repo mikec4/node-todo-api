@@ -1,102 +1,80 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'bugs',
-1 verbose cli   'nod-todo-api' ]
+1 verbose cli   'owner',
+1 verbose cli   'ls',
+1 verbose cli   'node-todo-api' ]
 2 info using npm@3.10.8
 3 info using node@v6.9.1
-4 silly fetchPackageMetaData nod-todo-api
-5 silly fetchNamedPackageData nod-todo-api
-6 silly mapToRegistry name nod-todo-api
-7 silly mapToRegistry using default registry
-8 silly mapToRegistry registry https://registry.npmjs.org/
-9 silly mapToRegistry data Result {
-9 silly mapToRegistry   raw: 'nod-todo-api',
-9 silly mapToRegistry   scope: null,
-9 silly mapToRegistry   escapedName: 'nod-todo-api',
-9 silly mapToRegistry   name: 'nod-todo-api',
-9 silly mapToRegistry   rawSpec: '',
-9 silly mapToRegistry   spec: 'latest',
-9 silly mapToRegistry   type: 'tag' }
-10 silly mapToRegistry uri https://registry.npmjs.org/nod-todo-api
-11 verbose request uri https://registry.npmjs.org/nod-todo-api
-12 verbose request no auth needed
-13 info attempt registry request try #1 at 11:20:35 AM
-14 verbose request id bbd47ad5f720a998
-15 http request GET https://registry.npmjs.org/nod-todo-api
-16 http 404 https://registry.npmjs.org/nod-todo-api
-17 verbose headers { 'content-type': 'application/json',
-17 verbose headers   'cache-control': 'max-age=0',
-17 verbose headers   'content-length': '2',
-17 verbose headers   'accept-ranges': 'bytes',
-17 verbose headers   date: 'Thu, 01 Dec 2016 08:20:37 GMT',
-17 verbose headers   via: '1.1 varnish',
-17 verbose headers   age: '0',
-17 verbose headers   connection: 'keep-alive',
-17 verbose headers   'x-served-by': 'cache-lcy1146-LCY',
-17 verbose headers   'x-cache': 'MISS',
-17 verbose headers   'x-cache-hits': '0',
-17 verbose headers   'x-timer': 'S1480580437.445531,VS0,VE346',
-17 verbose headers   vary: 'Accept-Encoding' }
-18 silly get cb [ 404,
-18 silly get   { 'content-type': 'application/json',
-18 silly get     'cache-control': 'max-age=0',
-18 silly get     'content-length': '2',
-18 silly get     'accept-ranges': 'bytes',
-18 silly get     date: 'Thu, 01 Dec 2016 08:20:37 GMT',
-18 silly get     via: '1.1 varnish',
-18 silly get     age: '0',
-18 silly get     connection: 'keep-alive',
-18 silly get     'x-served-by': 'cache-lcy1146-LCY',
-18 silly get     'x-cache': 'MISS',
-18 silly get     'x-cache-hits': '0',
-18 silly get     'x-timer': 'S1480580437.445531,VS0,VE346',
-18 silly get     vary: 'Accept-Encoding' } ]
-19 silly fetchPackageMetaData Error: Registry returned 404 for GET on https://registry.npmjs.org/nod-todo-api
-19 silly fetchPackageMetaData     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
-19 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
-19 silly fetchPackageMetaData     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
-19 silly fetchPackageMetaData     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
-19 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
-19 silly fetchPackageMetaData     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1044:10)
-19 silly fetchPackageMetaData     at emitOne (events.js:96:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
-19 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:965:12)
-19 silly fetchPackageMetaData  error for nod-todo-api { Error: Registry returned 404 for GET on https://registry.npmjs.org/nod-todo-api
-19 silly fetchPackageMetaData     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
-19 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
-19 silly fetchPackageMetaData     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
-19 silly fetchPackageMetaData     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
-19 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
-19 silly fetchPackageMetaData     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1044:10)
-19 silly fetchPackageMetaData     at emitOne (events.js:96:13)
-19 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
-19 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:965:12) pkgid: 'nod-todo-api', statusCode: 404, code: 'E404' }
-20 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/nod-todo-api
-20 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
-20 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
-20 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
-20 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
-20 verbose stack     at emitTwo (events.js:106:13)
-20 verbose stack     at Request.emit (events.js:191:7)
-20 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1044:10)
-20 verbose stack     at emitOne (events.js:96:13)
-20 verbose stack     at Request.emit (events.js:188:7)
-20 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:965:12)
-21 verbose statusCode 404
-22 verbose pkgid nod-todo-api
-23 verbose cwd C:\Users\Clara\Desktop\node-todo-api
-24 error Windows_NT 10.0.14393
-25 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "bugs" "nod-todo-api"
-26 error node v6.9.1
-27 error npm  v3.10.8
-28 error code E404
-29 error 404 Registry returned 404 for GET on https://registry.npmjs.org/nod-todo-api
-30 error 404
-31 error 404 'nod-todo-api' is not in the npm registry.
-32 error 404 You should bug the author to publish it (or use the name yourself!)
-33 error 404 Note that you can also install from a
-34 error 404 tarball, folder, http url, or git url.
-35 verbose exit [ 1, true ]
+4 silly mapToRegistry name node-todo-api
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: 'node-todo-api',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: 'node-todo-api',
+7 silly mapToRegistry   name: 'node-todo-api',
+7 silly mapToRegistry   rawSpec: '',
+7 silly mapToRegistry   spec: 'latest',
+7 silly mapToRegistry   type: 'tag' }
+8 silly mapToRegistry uri https://registry.npmjs.org/node-todo-api
+9 verbose request uri https://registry.npmjs.org/node-todo-api
+10 verbose request no auth needed
+11 info attempt registry request try #1 at 11:24:51 AM
+12 verbose request id 06fc75d857abf842
+13 http request GET https://registry.npmjs.org/node-todo-api
+14 http 404 https://registry.npmjs.org/node-todo-api
+15 verbose headers { 'content-type': 'application/json',
+15 verbose headers   'cache-control': 'max-age=0',
+15 verbose headers   'content-length': '2',
+15 verbose headers   'accept-ranges': 'bytes',
+15 verbose headers   date: 'Thu, 01 Dec 2016 08:24:53 GMT',
+15 verbose headers   via: '1.1 varnish',
+15 verbose headers   age: '0',
+15 verbose headers   connection: 'keep-alive',
+15 verbose headers   'x-served-by': 'cache-lcy1132-LCY',
+15 verbose headers   'x-cache': 'MISS',
+15 verbose headers   'x-cache-hits': '0',
+15 verbose headers   'x-timer': 'S1480580692.571398,VS0,VE659',
+15 verbose headers   vary: 'Accept-Encoding' }
+16 silly get cb [ 404,
+16 silly get   { 'content-type': 'application/json',
+16 silly get     'cache-control': 'max-age=0',
+16 silly get     'content-length': '2',
+16 silly get     'accept-ranges': 'bytes',
+16 silly get     date: 'Thu, 01 Dec 2016 08:24:53 GMT',
+16 silly get     via: '1.1 varnish',
+16 silly get     age: '0',
+16 silly get     connection: 'keep-alive',
+16 silly get     'x-served-by': 'cache-lcy1132-LCY',
+16 silly get     'x-cache': 'MISS',
+16 silly get     'x-cache-hits': '0',
+16 silly get     'x-timer': 'S1480580692.571398,VS0,VE659',
+16 silly get     vary: 'Accept-Encoding' } ]
+17 error owner ls Couldn't get owner data node-todo-api
+18 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/node-todo-api
+18 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+18 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+18 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+18 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+18 verbose stack     at emitTwo (events.js:106:13)
+18 verbose stack     at Request.emit (events.js:191:7)
+18 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1044:10)
+18 verbose stack     at emitOne (events.js:96:13)
+18 verbose stack     at Request.emit (events.js:188:7)
+18 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:965:12)
+19 verbose statusCode 404
+20 verbose pkgid node-todo-api
+21 verbose cwd C:\Users\Clara\Desktop\node-todo-api
+22 error Windows_NT 10.0.14393
+23 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "owner" "ls" "node-todo-api"
+24 error node v6.9.1
+25 error npm  v3.10.8
+26 error code E404
+27 error 404 Registry returned 404 for GET on https://registry.npmjs.org/node-todo-api
+28 error 404
+29 error 404 'node-todo-api' is not in the npm registry.
+30 error 404 You should bug the author to publish it (or use the name yourself!)
+31 error 404 Note that you can also install from a
+32 error 404 tarball, folder, http url, or git url.
+33 verbose exit [ 1, true ]
