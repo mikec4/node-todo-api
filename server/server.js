@@ -1,5 +1,6 @@
-var express=require('express');
-var bodyParser=require('body-parser');
+const express=require('express');
+const bodyParser=require('body-parser');
+const _=require('lodash');
 
 
 var {mongoose}=require('./db/mongoose');
@@ -19,7 +20,8 @@ app.use(bodyParser.json());
 app.post('/todos',(req,res)=>{
    
    var todo=new Todo({
-       name:req.body.name
+       name:req.body.name,
+       completed:req.body.completed
    });
 
    todo.save().then((docs)=>{
@@ -100,6 +102,36 @@ app.delete('/todos/:id',(res,req)=>{
     //if no doc send 404
     //if doc found send 200 with the particular removed doc
     //error if send empty array with 400 error code
+});
+
+app.patch('/todos/:id',(req,res)=>{
+
+    var id=req.params.id;
+    var body=_.pick(req.body,['name','completed']);
+      
+      if(!ObjectId.isValid(id)){
+          return res.status(404).send();
+      }
+    if(_.isBoolean(body.completed) && body.completed){
+        body.completedAt=new Date().getTime();
+    }
+    else{
+        body.completed=false;
+        body.completedAt=null;
+    }
+
+     Todo.findByIdAndUpdate(id,{$set:body},{new:true}).then((result)=>{
+         if(!result){
+           return res.status(404).send();
+         }
+
+         return res.send({result});
+
+     }).catch((error)=>{
+           res.status(400).send();
+     });
+
+
 });
 
 
