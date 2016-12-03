@@ -67,6 +67,40 @@ app.get('/todos/:id',(req,res)=>{
     });
 });
 
+//Remove all
+app.get('/todos',(res,req)=>{
+
+    Todo.remove().then((docs)=>{
+        if(docs){
+            res.status(200).send({docs});
+        }
+    }).
+    catch((err)=>res.send(err));
+});
+
+app.delete('/todos/:id',(res,req)=>{
+    //get the id
+     var id=req.params.id;
+     var isValidId=ObjectId.isValid(id);
+    //validate the id or if not return 404
+     if(!isValid){
+         return res.status(404).send();
+     }
+    //remove todo by id
+    Todo.findByIdAndRemove(id).then((result)=>{
+        if(result){
+           return res.status(200).send(result);
+        }
+        return res.status(404).send();
+    
+    }).catch((err)=>{
+        res.status(400).send();
+    });
+    //success 
+    //if no doc send 404
+    //if doc found send 200 with the particular removed doc
+    //error if send empty array with 400 error code
+});
 
 
 
