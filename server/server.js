@@ -8,6 +8,7 @@ var {mongoose}=require('./db/mongoose');
 var {User}=require('./models/user');
 var {Todo}=require('./models/todo');
 var {ObjectId}=require('mongodb');
+var {authenticate}=require('./middleware/authenticate');
 
 const port=process.env.PORT;
 
@@ -158,6 +159,25 @@ app.post('/users',(req,res)=>{
        res.status(400).send(err);
   });
 });
+
+//Create a middleware
+
+
+//private api
+ app.get('/users/me',authenticate,(req,res)=>{
+
+     // var token=req.header('x-auth');
+     //  User.FindByToken(token).then((user)=>{
+     //      if (!user){
+     //     return Promise.reject();
+     //      }
+     //      return res.send(user);
+     //  }).catch((e)=>{
+     //      res.status(401).send();
+     //  });
+
+     res.send(req.user);
+ });
 
 
 
