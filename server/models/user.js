@@ -2,6 +2,8 @@ const {mongoose}=require('../db/mongoose');
 const validator=require('validator');
 const jwt=require('jsonwebtoken');
 const _=require('lodash');
+const bycrpt=require('bcryptjs');
+
 
 
 
@@ -65,6 +67,8 @@ userSchema.methods.generateAuthToken=function(){
         return token;
     });
 };
+
+
 userSchema.statics.FindByToken=function (token) {
     var User=this;
     var decoded;
@@ -81,6 +85,21 @@ userSchema.statics.FindByToken=function (token) {
     });
 }
 
+userSchema.pre('save',function (next) {
+
+    var user=this;
+
+    if (user.isModified('password')){
+        bycrpt.genSalt(10,(err,salt)=>{
+            bycrpt.hash(user.password,salt,(err,hash)=>{
+                user.password=hash;
+                next();
+            });
+        });
+    }else {
+        next();
+    }
+});
 var User=mongoose.model('Users',userSchema);
 
 // var user=new User({

@@ -1,6 +1,13 @@
-const expect=require('expect');
-const request=request('supertest');
 
 
-const {app}=require('./../server.js');
-const {Todo}=require('./../models/todo');
+const bycript=require('bcryptjs');
+
+var password='mike';
+
+bycript.genSalt(10,(err,salt)=>{
+     bycript.hash(password,salt,(err,hash)=>{
+           console.log('hash',hash);
+     });
+
+});
+
