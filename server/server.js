@@ -179,6 +179,22 @@ app.post('/users',(req,res)=>{
      res.send(req.user);
  });
 
+ //post /users/login
+
+ app.post('/users/login',function (req, res) {
+     //first we need to get the user with same email and password as provided by the
+     //logged in users
+     var body=_.pick(req.body,['email','password']);
+     User.FindUserByCredentials(body.email,body.password).
+         then((user)=>{
+          return user.generateAuthToken().then((token)=>{
+               res.header('auth',token).send(user);
+           });
+     }).catch((e)=>{
+      res.statics(400).send();
+     });
+ });
+
 
 
 app.listen(port,()=>{

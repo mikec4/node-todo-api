@@ -100,6 +100,27 @@ userSchema.pre('save',function (next) {
         next();
     }
 });
+userSchema.statics.FindUserByCredentials=function (email,password) {
+   var User=this;
+
+   return User.findOne({email}).then((user)=>{
+       if (!user){
+           return Promise.reject();
+       }
+      return new Promise((resolve,reject)=>{
+           bycrpt.compare(password,user.password,(err,result)=>{
+               if (result){
+                   resolve(user);
+               }else {
+                   reject();
+               }
+           });
+
+       });
+   });
+
+
+}
 var User=mongoose.model('Users',userSchema);
 
 // var user=new User({
