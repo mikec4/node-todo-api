@@ -3,6 +3,7 @@ const validator=require('validator');
 const jwt=require('jsonwebtoken');
 const _=require('lodash');
 const bycrpt=require('bcryptjs');
+const config=require('./../config/config.json');
 
 
 
@@ -59,7 +60,7 @@ userSchema.methods.toJSON=function () {
 userSchema.methods.generateAuthToken=function(){
     var user=this;
     var access='auth';
-    var token=jwt.sign({_id:user._id.toHexString(),access},'mike').toString();
+    var token=jwt.sign({_id:user._id.toHexString(),access},process.env.JWT_SECRET).toString();
 
     user.tokens.push({access,token});
 
@@ -80,7 +81,7 @@ userSchema.statics.FindByToken=function (token) {
     var User=this;
     var decoded;
     try {
-       decoded=jwt.verify(token,'mike');
+       decoded=jwt.verify(token,process.env.JWT_SECRET);
     }catch (e){
       return Promise.reject();
     }

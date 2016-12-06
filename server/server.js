@@ -19,11 +19,12 @@ app.use(bodyParser.json());
 
 
 //post
-app.post('/todos',(req,res)=>{
+app.post('/todos',authenticate,(req,res)=>{
    
    var todo=new Todo({
        name:req.body.name,
-       completed:req.body.completed
+       completed:req.body.completed,
+       _creator:req.user._id
    });
 
    todo.save().then((docs)=>{
@@ -36,9 +37,11 @@ app.post('/todos',(req,res)=>{
 
 //get
 
-app.get('/todos',(req,res)=>{
+app.get('/todos',authenticate,(req,res)=>{
     
-    Todo.find().then((docs)=>{
+    Todo.find({
+        _creator:req.user._id
+    }).then((docs)=>{
         res.send({
             docs
         });
@@ -48,7 +51,7 @@ app.get('/todos',(req,res)=>{
 });
 
 //get passing a url parameter
-app.get('/todos/:id',(req,res)=>{
+app.get('/todos/:id',authenticate,(req,res)=>{
      
 
     //  var id="583df7ec6d58d50816a55aa0";
@@ -61,7 +64,10 @@ app.get('/todos/:id',(req,res)=>{
          return res.status(404).send('Invalid id');
      }
 
-    Todo.findById(id).then((succ)=>{
+    Todo.findOne({
+        _id:id,
+        _creator:req.user._id
+    }).then((succ)=>{
        if(succ){
          return  res.send({succ});
        }
@@ -72,9 +78,11 @@ app.get('/todos/:id',(req,res)=>{
 });
 
 //Remove all
-app.get('/todos',(res,req)=>{
+app.get('/todos',authenticate,(req,res)=>{
 
-    Todo.remove().then((docs)=>{
+    Todo.remove({
+        _creator:req.user._id
+    }).then((docs)=>{
         if(docs){
             res.status(200).send({docs});
         }
@@ -82,16 +90,19 @@ app.get('/todos',(res,req)=>{
     catch((err)=>res.send(err));
 });
 
-app.delete('/todos/:id',(res,req)=>{
+app.delete('/todos/:id',authenticate,(res,req)=>{
     //get the id
      var id=req.params.id;
-     var isValidId=ObjectId.isValid(id);
+     var isValid=ObjectId.isValid(id);
     //validate the id or if not return 404
      if(!isValid){
          return res.status(404).send();
      }
     //remove todo by id
-    Todo.findByIdAndRemove(id).then((result)=>{
+    Todo.findOneAndRemove({
+        _id:id,
+        _creator:req.user._id
+    }).then((result)=>{
         if(result){
            return res.status(200).send(result);
         }
