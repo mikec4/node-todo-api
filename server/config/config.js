@@ -2,7 +2,7 @@ var env=process.env.NODE_ENV || 'development';
 
 
 if (env==='development' || env==='test'){
-    var config=require('../config.json');
+    var config=require('./config.json');
     var configVar=config[env];
     Object.keys(configVar).forEach((key)=>{
     process.env[key]=configVar[key];
