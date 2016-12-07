@@ -1,4 +1,4 @@
 node_modules/
 food.js
 .vscode
-server/config/conf.json
+server/config/config.json
